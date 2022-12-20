@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.service.model.BioDataTO;
+import com.example.service.model.UserTO;
 
 public interface BioService {
 
@@ -17,4 +18,5 @@ public interface BioService {
 
 	public BioDataTO updateBioDataTO(BioDataTO bioDataTO, Long autoId);
 
+	public List<UserTO> getAllUsers();
 }

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.service.model.BioDataTO;
+import com.example.service.model.UserTO;
 import com.example.service.repo.BioDao;
+import com.example.service.repo.UserDAO;
 import com.example.service.services.BioService;
 
 @Service
@@ -16,6 +18,9 @@ public class BioServiceImpl implements BioService {
 
 	@Autowired
 	BioDao daoLayer;
+
+	@Autowired
+	UserDAO userDaoLayer;
 	
 	@Override
 	public BioDataTO save(BioDataTO BioDataTO) {
@@ -64,6 +69,12 @@ public class BioServiceImpl implements BioService {
 	public Optional<BioDataTO> findbyId(Long autoId) {
 		// TODO Auto-generated method stub
 		return daoLayer.findById(autoId);
+	}
+
+	@Override
+	public List<UserTO> getAllUsers() {
+		// TODO Auto-generated method stub
+		return (List<UserTO>) userDaoLayer.findAll();
 	}
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.service.model.BioDataTO;
 import com.example.service.model.RestInfo;
 import com.example.service.model.RestListInfo;
+import com.example.service.model.UserTO;
 import com.example.service.services.BioService;
 
 @org.springframework.web.bind.annotation.RestController
@@ -81,6 +82,23 @@ public class RestController {
 			info.setMessage("FAIL" + e.getLocalizedMessage());
 		}
 
+		return info;
+	}
+
+	@GetMapping("/getAllUsers")
+	public RestListInfo<UserTO> fetchAllUsers() {
+		
+		RestListInfo<UserTO> info = new RestListInfo<UserTO>();
+		try {
+			
+			info.setOperationCode(0);
+			info.setMessage("SUCESS");
+			info.setData(serviceLayer.getAllUsers());
+		} catch (Exception e) {
+			info.setOperationCode(-1);
+			info.setMessage("FAIL" + e.getLocalizedMessage());
+		}
+		
 		return info;
 	}
 
